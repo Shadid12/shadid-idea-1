@@ -2,6 +2,7 @@ $body-color: red
 $main-color: #eceff1
 $text-color: #3a4858
 $circle: #89b6c1
+$blue: #3a4858
 
 body
   color: $body-color
@@ -44,6 +45,8 @@ body
     justify-content: center
     padding-top: 40px
     padding-left: 90px
+    background-color: $main-color
+    padding-right: 20px
 
 
   .circle-elm
@@ -58,6 +61,9 @@ body
     justify-content: center
     align-items: center
 
+  .make-blue
+    background-color: $blue
+
 .jobs
   // border: 2px solid pink
   width: 350px
@@ -65,3 +71,16 @@ body
   margin-top: 100px
   opacity: 0
   transform: matrix(1, 0, 0, 1, 0, 100)
+
+.box-holder
+  margin: 20px
+  display: flex
+  flex: 1
+  flex-direction: column
+
+.quote
+  font-size: 24px
+  color: $text-color
+  padding-top: 40px
+  opacity: 0
+  transform: matrix(1, 0, 0, 1, 90, 0)
