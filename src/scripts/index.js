@@ -18,7 +18,8 @@ $( document ).ready(function() {
     
     const state = {
         jobs: true,
-        dylan: false
+        dylan: false,
+        zuck: false
     };
 
     TweenLite.to(logo, 1, { opacity: 1, x:0, ease: Power4.easeOut });
@@ -84,6 +85,7 @@ $( document ).ready(function() {
 
                         state.dylan = true;
                         state.jobs  = false;
+                        state.zuck  = false;
 
                     }
             });
@@ -121,7 +123,46 @@ $( document ).ready(function() {
                         `);
 
                         state.dylan = false;
+                        state.zuck  = false;
                         state.jobs  = true;
+                    }
+            });
+        }
+    });
+
+
+
+    $('#zuck').click(() => {
+        if(!state.zuck) {
+            TweenLite.to(jobs, 0.5, {opacity: 0, y: 100, ease: Power2.easeInOut});
+            TweenLite.to(circle, 0.5, 
+                {   scale: 0, 
+                    delay: 0.5, 
+                    ease: Power4.easeOut,
+                    onComplete: () => {
+                        $('.circle-elm').addClass('make-blue');
+                        TweenLite.to(circle, 1, {scale: 1, ease: Power4.easeOut});
+                        $('#circ-image').attr('src', '../src/img/zuck.png');
+                        TweenLite.to(jobs, 0.50, {opacity: 1, y: 50, delay: 1, ease: Power2.easeInOut});
+
+                        sideNavReset();
+
+                        quotesReset();
+
+                        $('#quote-1').text(`
+                            Founding a company is hard. Most of it isn't smooth.
+                            You'll have to make very hard decisions. You have to fire a few people. 
+                            Therefore, if you don't believe in your mission, giving up is easy.
+                            The majority of founders give up. But the best founders don't give up.
+                        `);
+                        $('#quote-2').text(`
+                            Move fast and break things. 
+                            Unless you are breaking stuff, you are not moving fast enough.
+                        `);
+
+                        state.dylan = false;
+                        state.jobs  = false;
+                        state.zuck  = true;
                     }
             });
         }
