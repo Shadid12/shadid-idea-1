@@ -3,8 +3,10 @@ $main-color: #eceff1
 $text-color: #3a4858
 $circle: #89b6c1
 $blue: #3a4858
+$social: #8c9cb3
 
 body
+  font-family: 'Roboto Mono', monospace
   color: $body-color
   padding: 0px
   margin: 0px
@@ -16,11 +18,13 @@ body
     display: flex
     padding: 20px
     height: 94vh
+    width: 150px
     background-color: $main-color
     flex-direction: column
 
     ul
       padding-top: 30px
+      padding-left: 25px
 
     li
       list-style: none
@@ -42,9 +46,8 @@ body
 
   .photo-holder
     display: flex
-    justify-content: center
+    flex-direction: column
     padding-top: 40px
-    padding-left: 90px
     background-color: $main-color
     padding-right: 20px
 
@@ -69,7 +72,8 @@ body
   // border: 2px solid pink
   width: 350px
   height: 350px
-  margin-top: 100px
+  margin-top: -100px
+  border-radius: 50%
   opacity: 0
   transform: matrix(1, 0, 0, 1, 0, 100)
 
@@ -79,9 +83,27 @@ body
   flex: 1
   flex-direction: column
 
-.quote
-  font-size: 24px
-  color: $text-color
-  padding-top: 40px
+.social-icons
+  display: flex
+  margin-top: 10px
+  justify-content: space-around
+  color: #000
+  font-size: 48px
+  background-color: $social
+  border-radius: 25px
+  box-shadow: 10px 16px 56px -9px rgba(0,0,0,0.75)
+  width: 0%
   opacity: 0
-  transform: matrix(1, 0, 0, 1, 90, 0)
+
+  a
+    cursor: pointer
+  .git
+    &:hover
+      color: #fff
+  .stack
+    &:hover
+      color: #fff
+  .linked
+    &:hover
+      color: #fff
+

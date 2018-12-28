@@ -13,7 +13,7 @@ $( document ).ready(function() {
           lastItem   = $('li:last-child'),
           circle     = $('.circle-elm'),
           jobs       = $('.jobs'),
-          quote      = $('.quote');
+          social      = $('.social-icons');
 
     
     const state = {
@@ -30,7 +30,7 @@ $( document ).ready(function() {
     TweenLite.to(circle, 1.50, {scale: 1, delay: 1, ease: Power4.easeOut});
     TweenLite.to(jobs, 1, {opacity: 1, delay: 2, y: 50, ease: Power2.easeInOut});
 
-    TweenLite.to(quote, 1, { opacity: 1, x:0, ease: Back.easeInOut, delay: 1.25});
+    TweenLite.to(social, 1, { width: "100%", opacity: 1,  ease: Back.easeInOut, delay: 1.75});
 
 
     function sideNavReset() {
@@ -46,15 +46,16 @@ $( document ).ready(function() {
                 TweenLite.to(lastItem, 0.75, { opacity: 1, y:30, ease: Power2.easeInOut });
             }
         });
+        TweenLite.to(social, 1, { width: "0%", opacity: 0,  ease: Back.easeInOut, delay: 1});
     }
 
-    function quotesReset() {
-        TweenLite.to(quote, 1, { opacity: 0, x:90, ease: Back.easeInOut, 
-            onComplete: () => {
-                TweenLite.to(quote, 1, { opacity: 1, x:0, ease: Back.easeInOut});
-            }
-        });
-    }
+    // function quotesReset() {
+    //     TweenLite.to(quote, 1, { opacity: 0, x:90, ease: Back.easeInOut, 
+    //         onComplete: () => {
+    //             TweenLite.to(quote, 1, { opacity: 1, x:0, ease: Back.easeInOut});
+    //         }
+    //     });
+    // }
 
     $('#item2').click(() => {
         if(!state.dylan) {
@@ -70,18 +71,6 @@ $( document ).ready(function() {
                         TweenLite.to(jobs, 0.50, {opacity: 1, y: 50, delay: 1, ease: Power2.easeInOut});
 
                         sideNavReset();
-
-
-                        quotesReset();
-
-
-                        $('#quote-1').text(`
-                            When something is important enough, you do it even if the odds are not in your favor.
-                        `);
-                        $('#quote-2').text(`
-                            I think it is possible for ordinary people to choose to be extraordinary.
-                        `);
-
 
                         state.dylan = true;
                         state.jobs  = false;
@@ -103,24 +92,12 @@ $( document ).ready(function() {
                     onComplete: () => {
                         $('.circle-elm').removeClass('make-blue');
                         TweenLite.to(circle, 1, {scale: 1, ease: Power4.easeOut});
-                        $('#circ-image').attr('src', '../src/img/jobs.png');
+                        $('#circ-image').attr('src', 'https://i.imgur.com/JqwyWlG.png');
                         TweenLite.to(jobs, 0.50, {opacity: 1, y: 50, delay: 1, ease: Power2.easeInOut});
 
                         sideNavReset();
 
-                        quotesReset();
-
-                        $('#quote-1').text(`
-                            Remembering that you are going to die is the best way I know to avoid the trap of thinking you have 
-                            something to lose. You are already naked. There is no reason not to follow your heart.
-                        `);
-                        $('#quote-2').text(`
-                            Your time is limited, so don’t waste it living someone else’s life. 
-                            Don’t be trapped by dogma — which is living with the results of other people’s thinking. 
-                            Don’t let the noise of others’ opinions drown out your own inner voice. 
-                            And most important, have the courage to follow your heart and intuition. 
-                            They somehow already know what you truly want to become. Everything else is secondary.
-                        `);
+                        TweenLite.to(social, 1, { width: "100%", opacity: 1,  ease: Back.easeInOut, delay: 1.75});
 
                         state.dylan = false;
                         state.zuck  = false;
