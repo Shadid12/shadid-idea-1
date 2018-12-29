@@ -63,7 +63,6 @@ $( document ).ready(function() {
 
     $('#item2').click(() => {
         if(!state.dylan) {
-            companies.hide();
             TweenLite.to(jobs, 0.5, {opacity: 0, y: 100, ease: Power2.easeInOut});
             TweenLite.to(circle, 0.5, 
                 {   scale: 0, 
@@ -95,6 +94,7 @@ $( document ).ready(function() {
 
     $('#jobs').click(() => {
         if(!state.jobs) {
+            TweenLite.to(companies, 1, {opacity: 0, y: 30, ease: Power2.easeInOut});
             companies.hide();
             TweenLite.to(jobs, 0.5, {opacity: 0, y: 100, ease: Power2.easeInOut});
             TweenLite.to(circle, 0.5, 
@@ -125,6 +125,7 @@ $( document ).ready(function() {
 
     $('#zuck').click(() => {
         if(!state.zuck) {
+            TweenLite.to(companies, 1, {opacity: 0, y: 30, ease: Power2.easeInOut});
             companies.hide();
             TweenLite.to(jobs, 0.5, {opacity: 0, y: 100, ease: Power2.easeInOut});
             TweenLite.to(circle, 0.5, 
@@ -134,10 +135,18 @@ $( document ).ready(function() {
                     onComplete: () => {
                         $('.circle-elm').addClass('make-blue');
                         TweenLite.to(circle, 1, {scale: 1, ease: Power4.easeOut});
-                        $('#circ-image').attr('src', '../src/img/zuck.png');
+                        $('#circ-image').attr('src', 'https://images.unsplash.com/photo-1523307910327-1623cf6957a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=699&q=80');
                         TweenLite.to(jobs, 0.50, {opacity: 1, y: 50, delay: 1, ease: Power2.easeInOut});
 
                         sideNavReset();
+                        summary.val = "";
+                        TweenLite.to(summary, 0.50, { opacity: 0, x: 0,  ease: Power4.easeInOut, 
+                            onComplete: () => {
+                                // TODO
+                                // companies.show();
+                                // TweenLite.to(companies, 1, {opacity: 1, y: 0, ease: Power2.easeInOut});
+                            }
+                        });
 
                         state.dylan = false;
                         state.jobs  = false;
