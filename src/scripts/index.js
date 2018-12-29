@@ -78,7 +78,12 @@ $( document ).ready(function() {
                         TweenLite.to(summary, 0.50, { opacity: 0, x: 0,  ease: Power4.easeInOut, 
                             onComplete: () => {
                                 companies.show();
-                                TweenLite.to(companies, 1, {opacity: 1, y: 0, ease: Power2.easeInOut});
+                                TweenLite.to(companies, 1, 
+                                    { opacity: 1, y: 0, ease: Power2.easeInOut,
+                                        // onComplete: () => {
+                                        //     TweenLite.to($('.av'), 1, { width: '100%', ease: Back.easeInOut, delay: 0.50 } )
+                                        // }
+                                    });
                             }
                         });
 
