@@ -44,6 +44,41 @@ $( document ).ready(function() {
         );
     TweenLite.to(summary, 1, { opacity: 1, x: 0,  ease: Power4.easeInOut })
 
+    function companiesChain() {
+        TweenLite.to($('.av'), 0.5, 
+        { scale: 1, transformOrigin:"50% 50%", ease: Power4.easeOut,
+            onComplete: () => {
+                TweenLite.to($('.ib'), 0.25, { scale: 1, transformOrigin:"50% 50%", ease: Power4.easeOut,
+                    onComplete: () => {
+                        TweenLite.to($('.it'), 0.25, { scale: 1, transformOrigin:"50% 50%", ease: Power4.easeOut,
+                            onComplete: () => {
+                                TweenLite.to($('.ez'), 0.25, { scale: 1, transformOrigin:"50% 50%", ease: Power4.easeOut,
+                                    onComplete: () => {
+                                        TweenLite.to($('.pc'), 0.25, { scale: 1, transformOrigin:"50% 50%", ease: Power4.easeOut,
+                                            onComplete: () => {
+                                                TweenLite.to($('.sy'), 0.25, { scale: 1, transformOrigin:"50% 50%", ease: Power4.easeOut
+                                                });
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+
+    function resetChain() {
+        $('.av').css('transform', 'scale(' + 0 + ')');
+        $('.ib').css('transform', 'scale(' + 0 + ')');
+        $('.it').css('transform', 'scale(' + 0 + ')');
+        $('.ez').css('transform', 'scale(' + 0 + ')');
+        $('.pc').css('transform', 'scale(' + 0 + ')');
+        $('.sy').css('transform', 'scale(' + 0 + ')');
+        
+    }
 
     function sideNavReset() {
 
@@ -80,9 +115,7 @@ $( document ).ready(function() {
                                 companies.show();
                                 TweenLite.to(companies, 1, 
                                     { opacity: 1, y: 0, ease: Power2.easeInOut,
-                                        // onComplete: () => {
-                                        //     TweenLite.to($('.av'), 1, { width: '100%', ease: Back.easeInOut, delay: 0.50 } )
-                                        // }
+                                        onComplete: companiesChain()
                                     });
                             }
                         });
@@ -100,6 +133,7 @@ $( document ).ready(function() {
     $('#jobs').click(() => {
         if(!state.jobs) {
             TweenLite.to(companies, 1, {opacity: 0, y: 30, ease: Power2.easeInOut});
+            sideNavReset();
             companies.hide();
             TweenLite.to(jobs, 0.5, {opacity: 0, y: 100, ease: Power2.easeInOut});
             TweenLite.to(circle, 0.5, 
@@ -131,6 +165,7 @@ $( document ).ready(function() {
     $('#zuck').click(() => {
         if(!state.zuck) {
             TweenLite.to(companies, 1, {opacity: 0, y: 30, ease: Power2.easeInOut});
+            sideNavReset();
             companies.hide();
             TweenLite.to(jobs, 0.5, {opacity: 0, y: 100, ease: Power2.easeInOut});
             TweenLite.to(circle, 0.5, 
