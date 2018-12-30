@@ -129,7 +129,6 @@ $( document ).ready(function() {
         }
     });
 
-
     $('#jobs').click(() => {
         if(!state.jobs) {
             TweenLite.to(companies, 1, {opacity: 0, y: 30, ease: Power2.easeInOut});
@@ -159,7 +158,6 @@ $( document ).ready(function() {
             });
         }
     });
-
 
 
     $('#zuck').click(() => {
@@ -196,7 +194,55 @@ $( document ).ready(function() {
         }
     });
 
+    $('#avaya').click(() => {
+        const toOpen = $(".to-open");
+        TweenLite.to(toOpen, 1,
+            { 
+                width: '100%',
+                height: '100%',
+                left: '0%',
+                top: '0%',
+                borderRadius: '0%',
+                ease: Back.easeInOut,
+                onComplete: () => {
+                    TweenLite.to($('.open-container'), 1, 
+                    { 
+                        opacity: 1,
+                        ease: Back.easeInOut
+                    });
+                    TweenLite.to($('.open-wrapper'), 1, 
+                    { 
+                        opacity: 1,
+                        x: 100,
+                        ease: Back.easeInOut
+                    })
+                }
+            }
+        );
+    })
 
+    $('#back').click(() => {
+        const toOpen = $(".to-open");
+        TweenLite.to($('.open-container'), 0.25, 
+        { 
+            opacity: 0,
+            ease: Back.easeInOut
+        });
+        TweenLite.to($('.open-wrapper'), 0.25, 
+        { 
+            opacity: 0,
+            x: 0,
+            ease: Back.easeInOut
+        })
+        TweenLite.to(toOpen, 1, {
+            width: '0%',
+            height: '0%',
+            left: '50%',
+            top: '50%',
+            borderRadius: '50%',
+            ease: Back.easeInOut
+        })
+    })
 
 
 });
